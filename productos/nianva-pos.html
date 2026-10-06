@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nianva POS | Nianva</title>
+  <meta name="description" content="Nianva POS: punto de venta en la nube que se adapta a tu giro: ropa, calzado, juguetería, abarrotes, papelería y más. Caja, inventario, apartados, devoluciones, promociones y reportes.">
+  <link rel="icon" href="../assets/Logo_N_SF.webp" type="image/webp">
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="../index.html" class="brand" aria-label="Nianva, ir al inicio">
+        <img src="../assets/Logo_N_SF.webp" alt="" class="brand-logo">
+        <span class="brand-name">Nianva</span>
+      </a>
+
+      <button class="nav-toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="navLinks">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav>
+        <ul class="nav-links" id="navLinks">
+          <li><a href="../index.html#productos">Productos</a></li>
+          <li><a href="../index.html#a-medida">A medida</a></li>
+          <li><a href="../index.html#nosotros">Nosotros</a></li>
+          <li><a href="../index.html#contacto" class="btn btn-primary" data-cotizar="Nianva POS" data-titulo="Contáctanos">Contacto</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Encabezado del producto -->
+  <section class="product-hero">
+    <div class="container">
+      <p class="breadcrumb">
+        <a href="../index.html#productos">Productos</a> / Nianva POS
+      </p>
+
+      <div class="product-header">
+        <div class="product-icon" aria-hidden="true">&#128722;</div>
+        <div>
+          <div class="product-badges">
+            <span class="badge">v1.0</span>
+            <span class="badge badge-purple">En la nube</span>
+            <span class="badge badge-purple">Multi-sucursal</span>
+          </div>
+          <h1>Nianva POS</h1>
+          <p class="product-tagline">
+            Punto de venta que se adapta a tu giro: vende, controla tu inventario y cuadra tu caja
+            desde el navegador, sin instalar nada. Lo configuramos para la forma en que trabaja tu negocio.
+          </p>
+        </div>
+      </div>
+
+      <div class="hero-actions">
+        <a href="../index.html#contacto" class="btn btn-primary" data-cotizar="Nianva POS" data-titulo="Solicitar demo de Nianva POS">Solicitar demo</a>
+        <a href="#giros" class="btn btn-secondary">¿Funciona para mi negocio? &darr;</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Ficha técnica -->
+  <section id="ficha" class="product-section alt">
+    <div class="container">
+      <div class="section-title">
+        <h2>Ficha técnica</h2>
+        <p>Lo esencial del sistema de un vistazo.</p>
+      </div>
+
+      <dl class="spec-table">
+        <div class="spec-row">
+          <dt>Tipo de sistema</dt>
+          <dd>Punto de venta (TPV) e inventario para comercio minorista (aplicación web)</dd>
+        </div>
+        <div class="spec-row">
+          <dt>Versión</dt>
+          <dd>1.0</dd>
+        </div>
+        <div class="spec-row">
+          <dt>Despliegue</dt>
+          <dd>En la nube: no requiere instalación ni servidor propio</dd>
+        </div>
+        <div class="spec-row">
+          <dt>Acceso</dt>
+          <dd>Navegador web en computadora o tablet</dd>
+        </div>
+        <div class="spec-row">
+          <dt>Giros</dt>
+          <dd>Comercio minorista en general; edición lista para ropa y boutiques, adaptable a calzado,
+            juguetería, abarrotes, papelería, ferretería y más (<a href="#giros" class="card-link">ver giros</a>)</dd>
+        </div>
+        <div class="spec-row">
+          <dt>Multi-sucursal</dt>
+          <dd>Varias sucursales con usuarios asignados a cada una</dd>
+        </div>
+        <div class="spec-row">
+          <dt>Usuarios y roles</dt>
+          <dd>Administrador y Vendedor; las operaciones sensibles en mostrador requieren autorización del administrador</dd>
+        </div>
+        <div class="spec-row">
+          <dt>Periféricos</dt>
+          <dd>Lector de código de barras, impresora de tickets e impresión de etiquetas con código de barras</dd>
+        </div>
+        <div class="spec-row">
+          <dt>Respaldos</dt>
+          <dd>Respaldos de la base de datos programables, con descarga y restauración</dd>
+        </div>
+        <div class="spec-row">
+          <dt>Soporte</dt>
+          <dd>Correo y WhatsApp</dd>
+        </div>
+      </dl>
+    </div>
+  </section>
+
+  <!-- Giros -->
+  <section id="giros" class="product-section">
+    <div class="container">
+      <div class="section-title">
+        <h2>Se adapta a tu giro</h2>
+        <p>Un mismo núcleo de punto de venta, configurado para lo que vende tu negocio.</p>
+      </div>
+
+      <div class="grid-modules">
+        <article class="solution-card module-card">
+          <div class="solution-icon">&#128087;</div>
+          <h3>Ropa y boutiques</h3>
+          <span class="badge">Disponible</span>
+          <ul>
+            <li>Variantes por talla y color con su propio stock</li>
+            <li>Apartados con abonos</li>
+            <li>Cambios de talla o color</li>
+          </ul>
+        </article>
+
+        <article class="solution-card module-card">
+          <div class="solution-icon">&#128095;</div>
+          <h3>Calzado</h3>
+          <span class="badge badge-purple">Adaptación</span>
+          <ul>
+            <li>Variantes por número y color</li>
+            <li>Etiquetas con código de barras por par</li>
+            <li>Cambios por otro número</li>
+          </ul>
+        </article>
+
+        <article class="solution-card module-card">
+          <div class="solution-icon">&#129528;</div>
+          <h3>Juguetería</h3>
+          <span class="badge badge-purple">Adaptación</span>
+          <ul>
+            <li>Venta rápida con lector de código de barras</li>
+            <li>Apartados de temporada (Navidad, Reyes)</li>
+            <li>Promociones y cupones por temporada</li>
+          </ul>
+        </article>
+
+        <article class="solution-card module-card">
+          <div class="solution-icon">&#129370;</div>
+          <h3>Abarrotes y misceláneas</h3>
+          <span class="badge badge-purple">Adaptación</span>
+          <ul>
+            <li>Cobro ágil con escáner en mostrador</li>
+            <li>Venta por pieza, kilo o litro</li>
+            <li>Crédito a clientes de confianza</li>
+          </ul>
+        </article>
+
+        <article class="solution-card module-card">
+          <div class="solution-icon">&#9999;</div>
+          <h3>Papelería y regalos</h3>
+          <span class="badge badge-purple">Adaptación</span>
+          <ul>
+            <li>Catálogo grande organizado por departamentos</li>
+            <li>Cotizaciones para escuelas y empresas</li>
+            <li>Promociones por cantidad</li>
+          </ul>
+        </article>
+
+        <article class="solution-card module-card">
+          <div class="solution-icon">&#128296;</div>
+          <h3>Ferretería</h3>
+          <span class="badge badge-purple">Adaptación</span>
+          <ul>
+            <li>Venta por pieza, metro o kilo</li>
+            <li>Cotizaciones a clientes</li>
+            <li>Compras y cuentas con proveedores</li>
+          </ul>
+        </article>
+      </div>
+
+      <p class="module-note">
+        ¿Tu giro no aparece? El núcleo del sistema es el mismo para cualquier comercio;
+        <a href="../index.html#contacto" class="card-link" data-cotizar="Nianva POS" data-titulo="Cuéntanos de tu negocio">cuéntanos de tu negocio</a>
+        y revisamos cómo adaptarlo.
+      </p>
+    </div>
+  </section>
+
+  <!-- Módulos -->
+  <section id="modulos" class="product-section alt">
+    <div class="container">
+      <div class="section-title">
+        <h2>Módulos incluidos</h2>
+        <p>Todo lo que tu negocio necesita, del mostrador a los reportes.</p>
+      </div>
+
+      <div class="grid-modules">
+        <article class="solution-card module-card">
+          <div class="solution-icon">&#128179;</div>
+          <h3>Punto de venta</h3>
+          <ul>
+            <li>Búsqueda por escáner, nombre o categoría</li>
+            <li>Promociones aplicadas automáticamente</li>
+            <li>Cobro con varias formas de pago</li>
+            <li>Impresión de ticket e historial de ventas</li>
+          </ul>
+        </article>
+
+        <article class="solution-card module-card">
+          <div class="solution-icon">&#128717;</div>
+          <h3>Apartados</h3>
+          <ul>
+            <li>Reserva de mercancía con enganche</li>
+            <li>Abonos parciales con forma de pago</li>
+            <li>Vencimiento y liquidación a venta</li>
+          </ul>
+        </article>
+
+        <article class="solution-card module-card">
+          <div class="solution-icon">&#128260;</div>
+          <h3>Devoluciones y cambios</h3>
+          <ul>
+            <li>Cambio por otro producto o variante</li>
+            <li>Reingreso automático a inventario</li>
+            <li>Saldo a favor o cobro de diferencia</li>
+          </ul>
+        </article>
+
+        <article class="solution-card module-card">
+          <div class="solution-icon">&#128176;</div>
+          <h3>Caja y gastos</h3>
+          <ul>
+            <li>Apertura y cierre de caja por turno</li>
+            <li>Cortes y arqueo de efectivo</li>
+            <li>Registro de gastos de caja chica</li>
+          </ul>
+        </article>
+
+        <article class="solution-card module-card">
+          <div class="solution-icon">&#127991;</div>
+          <h3>Productos</h3>
+          <ul>
+            <li>Variantes (talla, color, número, presentación)</li>
+            <li>Categorías y departamentos</li>
+            <li>Códigos de barras EAN-13</li>
+            <li>Etiquetas para impresora térmica</li>
+          </ul>
+        </article>
+
+        <article class="solution-card module-card">
+          <div class="solution-icon">&#128230;</div>
+          <h3>Inventario</h3>
+          <ul>
+            <li>Movimientos de entrada y salida</li>
+            <li>Kardex por producto</li>
+            <li>Reporte de productos por reordenar</li>
+          </ul>
+        </article>
+
+        <article class="solution-card module-card">
+          <div class="solution-icon">&#128666;</div>
+          <h3>Compras y proveedores</h3>
+          <ul>
+            <li>Padrón de proveedores</li>
+            <li>Entradas de mercancía por compra</li>
+            <li>Actualización automática del costo</li>
+          </ul>
+        </article>
+
+        <article class="solution-card module-card">
+          <div class="solution-icon">&#128101;</div>
+          <h3>Clientes</h3>
+          <ul>
+            <li>Padrón de clientes</li>
+            <li>Historial de compras y apartados</li>
+            <li>Saldo a favor</li>
+          </ul>
+        </article>
+
+        <article class="solution-card module-card">
+          <div class="solution-icon">&#127991;</div>
+          <h3>Promociones</h3>
+          <ul>
+            <li>Descuentos porcentuales o de monto fijo</li>
+            <li>Promociones por cantidad (2x1, 3x2…)</li>
+            <li>Cupones de descuento</li>
+          </ul>
+        </article>
+
+        <article class="solution-card module-card">
+          <div class="solution-icon">&#128200;</div>
+          <h3>Reportes</h3>
+          <ul>
+            <li>Ventas, compras e inventario</li>
+            <li>Cortes de caja y clientes frecuentes</li>
+            <li>Kardex, flujo de caja y resumen general</li>
+            <li>Exportación a Excel</li>
+          </ul>
+        </article>
+
+        <article class="solution-card module-card">
+          <div class="solution-icon">&#127970;</div>
+          <h3>Sucursales y usuarios</h3>
+          <ul>
+            <li>Alta de sucursales</li>
+            <li>Usuarios por sucursal y rol</li>
+            <li>Perfil y cambio de contraseña</li>
+          </ul>
+        </article>
+
+        <article class="solution-card module-card">
+          <div class="solution-icon">&#9881;</div>
+          <h3>Configuración y sistema</h3>
+          <ul>
+            <li>Datos de la empresa, logotipo y ticket</li>
+            <li>Respaldos de la información</li>
+            <li>Bitácora de actividad</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Módulos adicionales (vienen del núcleo neutro, aún en desarrollo) -->
+  <section id="adicionales" class="product-section">
+    <div class="container">
+      <div class="section-title">
+        <h2>Módulos adicionales</h2>
+        <p><span class="badge badge-muted">En desarrollo</span>&nbsp; Se activan según lo que necesite tu giro.</p>
+      </div>
+
+      <div class="grid-addons">
+        <article class="addon-card">
+          <span class="contact-icon">&#128221;</span>
+          <div>
+            <h3>Cotizaciones</h3>
+            <p>Cotiza y conviértela en venta con un clic.</p>
+          </div>
+        </article>
+        <article class="addon-card">
+          <span class="contact-icon">&#128210;</span>
+          <div>
+            <h3>Crédito a clientes</h3>
+            <p>Cuentas por cobrar, abonos y antigüedad de saldos.</p>
+          </div>
+        </article>
+        <article class="addon-card">
+          <span class="contact-icon">&#128197;</span>
+          <div>
+            <h3>Ventas a plazos</h3>
+            <p>Planes de pago sobre mercancía ya entregada.</p>
+          </div>
+        </article>
+        <article class="addon-card">
+          <span class="contact-icon">&#128666;</span>
+          <div>
+            <h3>Cuentas por pagar</h3>
+            <p>Crédito con proveedores y control de pagos.</p>
+          </div>
+        </article>
+        <article class="addon-card">
+          <span class="contact-icon">&#128757;</span>
+          <div>
+            <h3>Pedidos a domicilio</h3>
+            <p>Asignación de repartidor y seguimiento del pedido.</p>
+          </div>
+        </article>
+        <article class="addon-card">
+          <span class="contact-icon">&#127873;</span>
+          <div>
+            <h3>Tarjetas de regalo</h3>
+            <p>Emisión, recarga y canje en mostrador.</p>
+          </div>
+        </article>
+        <article class="addon-card">
+          <span class="contact-icon">&#11088;</span>
+          <div>
+            <h3>Lealtad y campañas</h3>
+            <p>Puntos para clientes frecuentes y campañas por segmento.</p>
+          </div>
+        </article>
+        <article class="addon-card">
+          <span class="contact-icon">&#9878;</span>
+          <div>
+            <h3>Unidades de medida</h3>
+            <p>Vende por pieza, kilo, litro o metro.</p>
+          </div>
+        </article>
+        <article class="addon-card">
+          <span class="contact-icon">&#129360;</span>
+          <div>
+            <h3>Producción y recetas</h3>
+            <p>Para negocios que elaboran lo que venden (panaderías, repostería).</p>
+          </div>
+        </article>
+        <article class="addon-card">
+          <span class="contact-icon">&#128188;</span>
+          <div>
+            <h3>Nómina</h3>
+            <p>Empleados y pago de nóminas.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Funcionalidades destacadas -->
+  <section class="product-section alt">
+    <div class="container">
+      <div class="section-title">
+        <h2>Lo que lo hace diferente</h2>
+      </div>
+
+      <div class="grid-solutions">
+        <article class="solution-card">
+          <div class="solution-icon">&#129513;</div>
+          <h3>Hecho para adaptarse</h3>
+          <p>Un núcleo común con módulos que se activan según tu giro: no pagas ni aprendes lo que no usas.</p>
+        </article>
+
+        <article class="solution-card">
+          <div class="solution-icon">&#128717;</div>
+          <h3>Apartados sin libreta</h3>
+          <p>Controla enganches, abonos y vencimientos sin perder de vista ningún artículo reservado.</p>
+        </article>
+
+        <article class="solution-card">
+          <div class="solution-icon">&#127970;</div>
+          <h3>Varias sucursales</h3>
+          <p>Opera todas tus tiendas en un mismo sistema, cada una con su caja y su personal.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-banner">
+    <div class="container cta-content">
+      <h2>¿Quieres verlo funcionando en tu tienda?</h2>
+      <p>Te mostramos el sistema y te preparamos una cotización a la medida.</p>
+      <a href="../index.html#contacto" class="btn btn-primary btn-large" data-cotizar="Nianva POS" data-titulo="Cotizar Nianva POS">Solicitar cotización</a>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div class="footer-col">
+        <a href="../index.html" class="brand" aria-label="Nianva, ir al inicio">
+          <img src="../assets/Logo_N_SF.webp" alt="" class="brand-logo">
+          <span class="brand-name">Nianva</span>
+        </a>
+        <p>Software y proyectos digitales, hechos en México.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Productos</h4>
+        <ul>
+          <li><a href="angara-dental.html">Angara Dental</a></li>
+          <li><a href="nianva-pos.html">Nianva POS</a></li>
+          <li><a href="a-tiempo.html">A Tiempo</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Empresa</h4>
+        <ul>
+          <li><a href="../index.html#a-medida">Proyectos a medida</a></li>
+          <li><a href="../index.html#nosotros">Sobre Nosotros</a></li>
+          <li><a href="../index.html#contacto">Contacto</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <p>&copy; <span id="anio"></span> Nianva. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <script src="../script.js"></script>
+</body>
+</html>

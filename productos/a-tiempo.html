@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A Tiempo | Nianva</title>
+  <meta name="description" content="A Tiempo: app gratuita para Android que te recuerda tus pagos, organiza tus tandas y controla tus ingresos y gastos.">
+  <link rel="icon" href="../assets/Logo_N_SF.webp" type="image/webp">
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="../index.html" class="brand" aria-label="Nianva, ir al inicio">
+        <img src="../assets/Logo_N_SF.webp" alt="" class="brand-logo">
+        <span class="brand-name">Nianva</span>
+      </a>
+
+      <button class="nav-toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="navLinks">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav>
+        <ul class="nav-links" id="navLinks">
+          <li><a href="../index.html#productos">Productos</a></li>
+          <li><a href="../index.html#a-medida">A medida</a></li>
+          <li><a href="../index.html#nosotros">Nosotros</a></li>
+          <li><a href="../index.html#contacto" class="btn btn-primary" data-cotizar data-titulo="Contáctanos">Contacto</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Encabezado del producto -->
+  <section class="product-hero">
+    <div class="container">
+      <p class="breadcrumb">
+        <a href="../index.html#productos">Productos</a> / A Tiempo
+      </p>
+
+      <div class="product-header">
+        <div class="product-icon" aria-hidden="true">&#9200;</div>
+        <div>
+          <div class="product-badges">
+            <span class="badge">v1.3.3</span>
+            <span class="badge badge-purple">Android</span>
+            <span class="badge badge-purple">Gratis</span>
+          </div>
+          <h1>A Tiempo</h1>
+          <p class="product-tagline">
+            Tu dinero bajo control desde el celular: recordatorios de pagos, tandas y registro de
+            ingresos y gastos en una sola app.
+          </p>
+        </div>
+      </div>
+
+      <div class="hero-actions">
+        <a href="https://play.google.com/store/apps/details?id=com.luvidcode.atiempo" class="btn btn-primary" target="_blank" rel="noopener">Descargar en Google Play</a>
+        <a href="#funciones" class="btn btn-secondary">Ver funciones &darr;</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Ficha técnica -->
+  <section id="ficha" class="product-section alt">
+    <div class="container">
+      <div class="section-title">
+        <h2>Ficha técnica</h2>
+        <p>Lo esencial de la app de un vistazo.</p>
+      </div>
+
+      <dl class="spec-table">
+        <div class="spec-row">
+          <dt>Tipo</dt>
+          <dd>App móvil de finanzas personales</dd>
+        </div>
+        <div class="spec-row">
+          <dt>Versión</dt>
+          <dd>1.3.3</dd>
+        </div>
+        <div class="spec-row">
+          <dt>Plataforma</dt>
+          <dd>Android 8.0 o superior</dd>
+        </div>
+        <div class="spec-row">
+          <dt>Precio</dt>
+          <dd>Gratis, con anuncios</dd>
+        </div>
+        <div class="spec-row">
+          <dt>Disponible en</dt>
+          <dd><a href="https://play.google.com/store/apps/details?id=com.luvidcode.atiempo" class="card-link" target="_blank" rel="noopener">Google Play</a></dd>
+        </div>
+        <div class="spec-row">
+          <dt>Cuenta</dt>
+          <dd>No necesitas registrarte: tu información se guarda en tu teléfono</dd>
+        </div>
+        <div class="spec-row">
+          <dt>Respaldo</dt>
+          <dd>Exporta e importa tus datos para no perderlos al cambiar de celular</dd>
+        </div>
+        <div class="spec-row">
+          <dt>Idioma y moneda</dt>
+          <dd>Español, pesos mexicanos</dd>
+        </div>
+      </dl>
+    </div>
+  </section>
+
+  <!-- Funciones -->
+  <section id="funciones" class="product-section">
+    <div class="container">
+      <div class="section-title">
+        <h2>Funciones</h2>
+        <p>Pensada para que ninguna fecha de pago se te pase.</p>
+      </div>
+
+      <div class="grid-modules">
+        <article class="solution-card module-card">
+          <div class="solution-icon">&#128276;</div>
+          <h3>Recordatorios de pagos</h3>
+          <ul>
+            <li>Con monto y fecha de vencimiento</li>
+            <li>Repetición diaria, semanal, quincenal, mensual o anual</li>
+            <li>Filtro por categoría e historial de realizados</li>
+          </ul>
+        </article>
+
+        <article class="solution-card module-card">
+          <div class="solution-icon">&#9200;</div>
+          <h3>Alertas</h3>
+          <ul>
+            <li>Notificaciones antes del vencimiento</li>
+            <li>Días de anticipación configurables</li>
+            <li>Frecuencia de avisos a tu gusto</li>
+          </ul>
+        </article>
+
+        <article class="solution-card module-card">
+          <div class="solution-icon">&#129309;</div>
+          <h3>Tandas</h3>
+          <ul>
+            <li>Crea y administra tus tandas</li>
+            <li>Participantes y turnos</li>
+            <li>Control de quién ya pagó en cada ronda</li>
+          </ul>
+        </article>
+
+        <article class="solution-card module-card">
+          <div class="solution-icon">&#128181;</div>
+          <h3>Ingresos y gastos</h3>
+          <ul>
+            <li>Registro rápido de movimientos</li>
+            <li>Totales y balance por mes</li>
+            <li>Categorías con emoji personalizables</li>
+          </ul>
+        </article>
+
+        <article class="solution-card module-card">
+          <div class="solution-icon">&#9881;</div>
+          <h3>Personalización</h3>
+          <ul>
+            <li>Apariencia de la app</li>
+            <li>Formato de hora</li>
+            <li>Pantalla de inicio a tu medida</li>
+          </ul>
+        </article>
+
+        <article class="solution-card module-card">
+          <div class="solution-icon">&#128190;</div>
+          <h3>Tus datos</h3>
+          <ul>
+            <li>Guardados en tu teléfono, sin crear cuenta</li>
+            <li>Exportar e importar respaldo</li>
+            <li>Gestos rápidos: desliza para editar o eliminar</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-banner">
+    <div class="container cta-content">
+      <h2>Empieza a organizar tus pagos hoy</h2>
+      <p>Descarga A Tiempo gratis desde Google Play.</p>
+      <a href="https://play.google.com/store/apps/details?id=com.luvidcode.atiempo" class="btn btn-primary btn-large" target="_blank" rel="noopener">Descargar gratis</a>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div class="footer-col">
+        <a href="../index.html" class="brand">
+          <img src="../assets/Logo_N_SF.webp" alt="" class="brand-logo">
+          <span class="brand-name">Nianva</span>
+        </a>
+        <p>Software y proyectos digitales, hechos en México.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Productos</h4>
+        <ul>
+          <li><a href="angara-dental.html">Angara Dental</a></li>
+          <li><a href="nianva-pos.html">Nianva POS</a></li>
+          <li><a href="a-tiempo.html">A Tiempo</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Empresa</h4>
+        <ul>
+          <li><a href="../index.html#a-medida">Proyectos a medida</a></li>
+          <li><a href="../index.html#nosotros">Sobre Nosotros</a></li>
+          <li><a href="../index.html#contacto">Contacto</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <p>&copy; <span id="anio"></span> Nianva. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <script src="../script.js"></script>
+</body>
+</html>

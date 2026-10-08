@@ -1,0 +1,23 @@
+{
+  // Worker de nianva.com: sirve el sitio estático de ./public y atiende /api/* (formularios).
+  // El nombre debe coincidir con el Worker conectado en Cloudflare.
+  "name": "nianva-page",
+  "main": "src/worker.js",
+  "compatibility_date": "2025-09-01",
+
+  "assets": {
+    "directory": "./public",
+    "binding": "ASSETS"
+  },
+
+  // Configuración pública del envío. La API key de Resend NO va aquí:
+  // se guarda como secret RESEND_API_KEY en Cloudflare (Worker → Settings → Variables and Secrets).
+  "vars": {
+    "CONTACT_TO": "luvid.code@gmail.com",
+    "CONTACT_FROM": "Nianva <contacto@nianva.com>"
+  },
+
+  "observability": {
+    "enabled": true
+  }
+}

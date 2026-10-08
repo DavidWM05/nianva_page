@@ -32,29 +32,70 @@ if (navToggle && navLinks) {
   });
 }
 
-// Envío de formularios (sin backend: reemplaza el cuerpo de enviarFormulario por tu integración real)
+// Envío de formularios al Worker (src/worker.js → POST /api/contacto, que manda el correo con Resend)
+const API_CONTACTO = '/api/contacto';
+
 function enviarFormulario(form, alEnviar) {
-  form.addEventListener('submit', (event) => {
+  const boton = form.querySelector('[type="submit"]');
+  const textoBoton = boton.textContent;
+  const error = form.querySelector('.form-error');
+
+  // Momento en que el formulario quedó disponible: el backend descarta envíos hechos en menos de 3 s (bots)
+  form.dataset.inicio = Date.now();
+
+  form.addEventListener('submit', async (event) => {
     event.preventDefault();
+    error.hidden = true;
+
     if (!form.checkValidity()) {
       form.reportValidity();
       return;
     }
-    alEnviar();
-    form.reset();
+
+    const datos = Object.fromEntries(new FormData(form));
+    datos.origen = form.dataset.origen;
+    datos.pagina = location.pathname;
+    datos.tiempo = Date.now() - Number(form.dataset.inicio);
+
+    boton.disabled = true;
+    boton.textContent = 'Enviando...';
+
+    try {
+      const respuesta = await fetch(API_CONTACTO, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(datos),
+      });
+      const resultado = await respuesta.json().catch(() => ({}));
+
+      if (!respuesta.ok || !resultado.ok) {
+        throw new Error(resultado.error || 'No pudimos enviar tu mensaje.');
+      }
+
+      form.reset();
+      alEnviar();
+    } catch (falla) {
+      const mensaje = falla instanceof TypeError ? 'Revisa tu conexión a internet e intenta de nuevo.' : falla.message;
+      error.innerHTML = `${mensaje} También puedes <a href="https://wa.me/${WHATSAPP}" target="_blank" rel="noopener">escribirnos por WhatsApp</a>.`;
+      error.hidden = false;
+    } finally {
+      boton.disabled = false;
+      boton.textContent = textoBoton;
+    }
   });
 }
 
+const WHATSAPP = '527295111850';
 const contactForm = document.getElementById('contactForm');
 const formSuccess = document.getElementById('formSuccess');
 
 if (contactForm && formSuccess) {
+  contactForm.addEventListener('input', () => formSuccess.classList.remove('visible'));
   enviarFormulario(contactForm, () => formSuccess.classList.add('visible'));
 }
 
 // Modal de cotización: cualquier enlace con data-cotizar lo abre sin salir de la página.
 // Sin JS (o sin soporte de <dialog>) el enlace sigue llevando al formulario de contacto.
-const WHATSAPP = '527295111850';
 const PRODUCTOS = ['Angara Dental', 'Nianva POS', 'Proyecto a medida'];
 const disparadores = document.querySelectorAll('[data-cotizar]');
 
@@ -76,6 +117,8 @@ if (disparadores.length && typeof HTMLDialogElement === 'function') {
     titulo.textContent = disparador.dataset.titulo || 'Solicitar cotización';
     form.hidden = false;
     exito.hidden = true;
+    form.querySelector('.form-error').hidden = true;
+    form.dataset.inicio = Date.now();
     producto.value = PRODUCTOS.includes(disparador.dataset.cotizar) ? disparador.dataset.cotizar : '';
     actualizarWhatsapp();
     if (navLinks) cerrarMenu();
@@ -127,20 +170,20 @@ function crearModal() {
       </div>
       <p class="modal-subtitle">Cuéntanos de tu negocio y te contactamos para mostrarte el sistema.</p>
 
-      <form novalidate>
+      <form data-origen="cotizacion" novalidate>
         <div class="form-row">
           <div class="form-group">
             <label for="q-nombre">Nombre</label>
-            <input type="text" id="q-nombre" name="nombre" placeholder="Tu nombre" autocomplete="name" required>
+            <input type="text" id="q-nombre" name="nombre" placeholder="Tu nombre" autocomplete="name" maxlength="100" required>
           </div>
           <div class="form-group">
             <label for="q-telefono">Teléfono <span class="optional">(opcional)</span></label>
-            <input type="tel" id="q-telefono" name="telefono" placeholder="10 dígitos" autocomplete="tel">
+            <input type="tel" id="q-telefono" name="telefono" placeholder="10 dígitos" autocomplete="tel" maxlength="30">
           </div>
         </div>
         <div class="form-group">
           <label for="q-correo">Correo</label>
-          <input type="email" id="q-correo" name="correo" placeholder="tu@correo.com" autocomplete="email" required>
+          <input type="email" id="q-correo" name="correo" placeholder="tu@correo.com" autocomplete="email" maxlength="200" required>
         </div>
         <div class="form-row">
           <div class="form-group">
@@ -152,14 +195,19 @@ function crearModal() {
           </div>
           <div class="form-group">
             <label for="q-giro">Giro del negocio <span class="optional">(opcional)</span></label>
-            <input type="text" id="q-giro" name="giro" placeholder="Ej. abarrotes, calzado">
+            <input type="text" id="q-giro" name="giro" placeholder="Ej. abarrotes, calzado" maxlength="100">
           </div>
         </div>
         <div class="form-group">
           <label for="q-mensaje">Mensaje <span class="optional">(opcional)</span></label>
-          <textarea id="q-mensaje" name="mensaje" rows="3" placeholder="Número de sucursales, usuarios, lo que necesitas..."></textarea>
+          <textarea id="q-mensaje" name="mensaje" rows="3" placeholder="Número de sucursales, usuarios, lo que necesitas..." maxlength="3000"></textarea>
+        </div>
+        <div class="form-trampa" aria-hidden="true">
+          <label for="q-website">No llenar este campo</label>
+          <input type="text" id="q-website" name="website" tabindex="-1" autocomplete="off">
         </div>
         <button type="submit" class="btn btn-primary btn-large form-submit">Enviar solicitud</button>
+        <p class="form-error" role="alert" hidden></p>
       </form>
 
       <div class="modal-success" hidden>

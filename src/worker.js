@@ -13,6 +13,11 @@ const LIMITES = {
   pagina: 200,
 };
 
+const NOMBRES_FORMULARIO = {
+  contacto: 'Contacto',
+  cotizacion: 'Cotización',
+};
+
 // Un humano tarda más que esto en llenar el formulario; los bots suelen enviarlo al instante
 const TIEMPO_MINIMO_MS = 3000;
 const TAMANO_MAXIMO_BYTES = 16 * 1024;
@@ -70,6 +75,9 @@ async function manejarContacto(request, env, url) {
   if (errores.length) {
     return json({ ok: false, error: errores.join(' ') }, 422);
   }
+
+  // Nombre legible del formulario para el correo (el valor interno no lleva tildes)
+  campos.origen = NOMBRES_FORMULARIO[campos.origen] || campos.origen;
 
   if (!env.RESEND_API_KEY) {
     console.error('Falta el secret RESEND_API_KEY');

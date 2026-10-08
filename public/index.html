@@ -305,21 +305,26 @@
           </div>
         </div>
 
-        <form class="contact-form" id="contactForm" novalidate>
+        <form class="contact-form" id="contactForm" data-origen="contacto" novalidate>
           <div class="form-group">
             <label for="name">Nombre</label>
-            <input type="text" id="name" name="name" placeholder="Tu nombre" required>
+            <input type="text" id="name" name="nombre" placeholder="Tu nombre" autocomplete="name" maxlength="100" required>
           </div>
           <div class="form-group">
             <label for="email">Correo</label>
-            <input type="email" id="email" name="email" placeholder="tu@correo.com" required>
+            <input type="email" id="email" name="correo" placeholder="tu@correo.com" autocomplete="email" maxlength="200" required>
           </div>
           <div class="form-group">
             <label for="message">Mensaje</label>
-            <textarea id="message" name="message" rows="4" placeholder="Cuéntanos sobre tu proyecto" required></textarea>
+            <textarea id="message" name="mensaje" rows="4" placeholder="Cuéntanos sobre tu proyecto" maxlength="3000" required></textarea>
+          </div>
+          <div class="form-trampa" aria-hidden="true">
+            <label for="website">No llenar este campo</label>
+            <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
           </div>
           <button type="submit" class="btn btn-primary btn-large form-submit">Enviar Mensaje</button>
-          <p class="form-success" id="formSuccess">¡Gracias! Tu mensaje fue recibido, te contactaremos pronto.</p>
+          <p class="form-success" id="formSuccess" role="status">¡Gracias! Tu mensaje fue recibido, te contactaremos pronto.</p>
+          <p class="form-error" role="alert" hidden></p>
         </form>
       </div>
     </div>

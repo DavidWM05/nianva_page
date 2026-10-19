@@ -448,6 +448,23 @@ img {
   background: linear-gradient(135deg, rgba(249, 115, 22, 0.25), rgba(168, 85, 247, 0.25));
 }
 
+/* Variante con foto real: llena el área de la tarjeta enfocando el mostrador (lado derecho de la foto) */
+.card-photo {
+  overflow: hidden;
+}
+
+.card-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 68% center;
+  transition: transform 0.4s ease;
+}
+
+.card:hover .card-photo img {
+  transform: scale(1.05);
+}
+
 .card-body {
   padding: 1.5rem;
 }

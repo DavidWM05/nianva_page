@@ -892,6 +892,114 @@ img {
   background-color: rgba(255, 255, 255, 0.02);
 }
 
+/* Variante del encabezado con foto de fondo (.product-cover + img.cover-img).
+   Degradado oscuro a la izquierda para leer el texto y transparente a la derecha para lucir la foto. */
+.product-cover {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  min-height: calc(100vh - var(--nav-h));
+  min-height: calc(100svh - var(--nav-h));
+  padding: 3rem 0 4rem;
+}
+
+.cover-img {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 70% center;
+}
+
+.product-cover::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(to bottom, transparent 75%, var(--bg-primary) 100%),
+    linear-gradient(90deg,
+      rgba(15, 23, 42, 0.97) 0%,
+      rgba(15, 23, 42, 0.9) 35%,
+      rgba(15, 23, 42, 0.55) 60%,
+      rgba(15, 23, 42, 0.15) 100%);
+}
+
+.cover-content {
+  width: 100%;
+}
+
+.cover-content > * {
+  max-width: 620px;
+}
+
+.product-cover .product-badges {
+  margin-bottom: 1.25rem;
+}
+
+.cover-eyebrow {
+  margin-bottom: 0.4rem;
+  color: var(--accent-color);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.product-cover h1 {
+  font-size: 3.2rem;
+  line-height: 1.1;
+  margin-bottom: 1rem;
+}
+
+.product-cover .product-tagline {
+  color: #cbd5e1;
+}
+
+.cover-points {
+  list-style: none;
+  margin-top: 1.5rem;
+  display: grid;
+  gap: 0.7rem;
+}
+
+.cover-points li {
+  position: relative;
+  padding-left: 2rem;
+  color: #cbd5e1;
+}
+
+.cover-points li strong {
+  color: var(--text-main);
+}
+
+.cover-points li::before {
+  content: "\2713";
+  position: absolute;
+  left: 0;
+  top: 0.1em;
+  width: 1.35rem;
+  height: 1.35rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent-color), var(--brand-purple));
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.cover-note {
+  margin-top: 1.25rem;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+
 /* Ficha técnica */
 .spec-table {
   max-width: 860px;
@@ -1017,6 +1125,200 @@ img {
   color: var(--text-muted);
   font-size: 0.88rem;
 }
+
+/* ==========================================================================
+   GALERÍA DE CAPTURAS (carrusel + vista ampliada; lógica en script.js)
+   Sin JS sigue funcionando: el carrusel se desliza con el dedo / scroll horizontal.
+   ========================================================================== */
+.gallery {
+  position: relative;
+  max-width: 980px;
+  margin: 0 auto;
+}
+
+.gallery-viewport {
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  border-radius: var(--radius-lg);
+}
+
+.gallery-viewport::-webkit-scrollbar {
+  display: none;
+}
+
+.gallery-viewport:focus-visible {
+  outline: 2px solid var(--brand-purple);
+  outline-offset: 4px;
+}
+
+.gallery-track {
+  display: flex;
+  list-style: none;
+}
+
+.gallery-slide {
+  flex: 0 0 100%;
+  scroll-snap-align: center;
+  padding: 0 0.25rem 0.75rem;
+}
+
+/* Marco tipo ventana de navegador para que se lea como captura del sistema */
+.gallery-frame {
+  display: block;
+  width: 100%;
+  padding: 28px 0 0;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-lg);
+  background-color: var(--bg-card);
+  background-image:
+    radial-gradient(circle at 16px 14px, #f87171 4px, transparent 5px),
+    radial-gradient(circle at 32px 14px, #fbbf24 4px, transparent 5px),
+    radial-gradient(circle at 48px 14px, #34d399 4px, transparent 5px);
+  background-repeat: no-repeat;
+  overflow: hidden;
+  cursor: zoom-in;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.35);
+  transition: var(--transition);
+}
+
+.gallery-frame:hover {
+  border-color: var(--brand-purple);
+}
+
+.gallery-frame img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.gallery-slide figcaption {
+  max-width: 640px;
+  margin: 1.25rem auto 0;
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+.gallery-slide figcaption strong {
+  display: block;
+  color: var(--text-main);
+  font-size: 1.1rem;
+  margin-bottom: 0.2rem;
+}
+
+.gallery-nav {
+  position: absolute;
+  top: calc(50% - 3rem);
+  width: 44px;
+  height: 44px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 50%;
+  background-color: rgba(15, 23, 42, 0.85);
+  backdrop-filter: blur(6px);
+  color: var(--text-main);
+  font-size: 1.8rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: var(--transition);
+  z-index: 1;
+}
+
+.gallery-nav:hover:not(:disabled) {
+  border-color: var(--accent-color);
+  color: var(--accent-color);
+}
+
+.gallery-nav:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+
+.gallery-prev { left: -22px; }
+.gallery-next { right: -22px; }
+
+/* Sin JS no hay botones funcionales: se ocultan hasta que script.js marca la galería como lista */
+.gallery:not(.is-ready) .gallery-nav {
+  display: none;
+}
+
+.gallery-dots {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 1.25rem;
+}
+
+.gallery-dot {
+  width: 10px;
+  height: 10px;
+  padding: 0;
+  border: none;
+  border-radius: 999px;
+  background-color: rgba(148, 163, 184, 0.35);
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.gallery-dot[aria-current="true"] {
+  width: 28px;
+  background: linear-gradient(90deg, var(--accent-color), var(--brand-purple));
+}
+
+/* Vista ampliada */
+.lightbox {
+  width: min(1400px, calc(100% - 2rem));
+  max-height: calc(100dvh - 2rem);
+  margin: auto;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: var(--text-main);
+  overflow: visible;
+}
+
+.lightbox::backdrop {
+  background-color: rgba(2, 6, 23, 0.9);
+  backdrop-filter: blur(4px);
+}
+
+.lightbox[open] {
+  animation: modal-in 0.2s ease-out;
+}
+
+.lightbox img {
+  display: block;
+  width: 100%;
+  max-height: calc(100dvh - 7rem);
+  object-fit: contain;
+  border-radius: var(--radius-sm);
+}
+
+.lightbox-caption {
+  margin-top: 0.75rem;
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+.lightbox-caption strong {
+  color: var(--text-main);
+}
+
+.lightbox-close {
+  position: absolute;
+  top: -0.5rem;
+  right: -0.5rem;
+  transform: translateY(-100%);
+}
+
+.lightbox .gallery-nav {
+  top: calc(50% - 2.5rem);
+}
+
+.lightbox .gallery-prev { left: 0.75rem; }
+.lightbox .gallery-next { right: 0.75rem; }
 
 /* ==========================================================================
    MODAL DE COTIZACIÓN (se inyecta desde script.js)
@@ -1195,10 +1497,30 @@ html.modal-open {
 
   .product-header h1 { font-size: 2rem; }
 
+  /* En celular el texto ocupa todo el ancho: la foto se oscurece pareja para que se lea */
+  .product-cover { padding: 2.5rem 0 3rem; }
+  .product-cover h1 { font-size: 2.2rem; }
+  .cover-img { object-position: 78% center; }
+  .product-cover::before {
+    background:
+      linear-gradient(to bottom, transparent 70%, var(--bg-primary) 100%),
+      linear-gradient(rgba(15, 23, 42, 0.86), rgba(15, 23, 42, 0.86));
+  }
+
   .spec-row {
     grid-template-columns: 1fr;
     gap: 0.25rem;
   }
+
+  /* En celular las flechas van sobre la imagen (la deshabilitada se oculta) y la barra de ventana es más delgada */
+  .gallery .gallery-nav:disabled { visibility: hidden; }
+  .gallery-prev { left: 0.5rem; }
+  .gallery-next { right: 0.5rem; }
+  .gallery-nav { width: 38px; height: 38px; font-size: 1.5rem; top: calc(50% - 4rem); }
+  .gallery-frame { padding-top: 18px; background-image:
+    radial-gradient(circle at 12px 9px, #f87171 3px, transparent 4px),
+    radial-gradient(circle at 24px 9px, #fbbf24 3px, transparent 4px),
+    radial-gradient(circle at 36px 9px, #34d399 3px, transparent 4px); }
 
   .nav-toggle {
     display: flex;

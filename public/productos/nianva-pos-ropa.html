@@ -32,33 +32,110 @@
     </div>
   </header>
 
-  <!-- Encabezado del producto -->
-  <section class="product-hero">
-    <div class="container">
+  <!-- Encabezado del producto: foto de tienda de fondo con degradado para que el texto se lea -->
+  <section class="product-hero product-cover">
+    <img class="cover-img" src="../assets/nianva-pos-ropa/05_bakground_tienda.webp" alt=""
+         width="2752" height="1536" fetchpriority="high">
+
+    <div class="container cover-content">
       <p class="breadcrumb">
         <a href="../index.html#productos">Productos</a> / Nianva POS Ropa
       </p>
 
-      <div class="product-header">
-        <div class="product-icon" aria-hidden="true">&#128087;</div>
-        <div>
-          <div class="product-badges">
-            <span class="badge">v2.0</span>
-            <span class="badge badge-purple">Instalación local</span>
-            <span class="badge badge-purple">Multi-sucursal</span>
-          </div>
-          <h1>Nianva POS Ropa</h1>
-          <p class="product-tagline">
-            Punto de venta para tiendas de ropa y boutiques: variantes por talla y color,
-            apartados con abonos, devoluciones, promociones y cierre de caja.
-            Se instala en tu negocio, sin mensualidades ni internet obligatorio.
-          </p>
-        </div>
+      <div class="product-badges">
+        <span class="badge">v2.0</span>
+        <span class="badge badge-purple">Instalación local</span>
+        <span class="badge badge-purple">Multi-sucursal</span>
       </div>
+
+      <p class="cover-eyebrow">Punto de venta para tiendas de ropa y boutiques</p>
+      <h1>Nianva POS Ropa</h1>
+      <p class="product-tagline">
+        Vende más rápido en mostrador, controla tu inventario por talla y color y cierra caja sin
+        complicaciones. Un sistema pensado para el día a día de tu tienda, que tu equipo domina en minutos.
+      </p>
+
+      <ul class="cover-points">
+        <li><strong>Inventario por talla y color</strong>, con stock y código de barras por variante.</li>
+        <li><strong>Apartados, cambios y devoluciones</strong> sin libretas ni hojas sueltas.</li>
+        <li><strong>Funciona sin internet</strong>: se instala dentro de tu propia tienda.</li>
+        <li><strong>Pago único</strong>, sin mensualidades ni cuotas por uso.</li>
+      </ul>
 
       <div class="hero-actions">
         <a href="../index.html#contacto" class="btn btn-primary" data-cotizar="Nianva POS Ropa" data-titulo="Solicitar demo de Nianva POS Ropa">Solicitar demo</a>
-        <a href="#modulos" class="btn btn-secondary">Ver módulos &darr;</a>
+        <a href="#capturas" class="btn btn-secondary">Ver el sistema &darr;</a>
+      </div>
+
+      <p class="cover-note">Multi-sucursal &middot; Lector de código de barras &middot; Tickets y etiquetas &middot; Respaldos automáticos</p>
+    </div>
+  </section>
+
+  <!-- Capturas del sistema (carrusel: script.js inicializa todo .gallery) -->
+  <section id="capturas" class="product-section">
+    <div class="container">
+      <div class="section-title">
+        <h2>Diseñado para vender más rápido</h2>
+        <p>Una interfaz clara que tu equipo aprende en minutos, no en semanas.</p>
+      </div>
+
+      <div class="gallery" aria-roledescription="carrusel" aria-label="Capturas de Nianva POS Ropa">
+        <div class="gallery-viewport" tabindex="0">
+          <ul class="gallery-track">
+            <li class="gallery-slide" aria-roledescription="diapositiva" aria-label="1 de 4">
+              <figure>
+                <button type="button" class="gallery-frame" aria-label="Ampliar captura: Acceso con tu marca">
+                  <img src="../assets/nianva-pos-ropa/01_login.webp" width="1440" height="900"
+                       alt="Pantalla de acceso personalizada con la imagen de la tienda y los colores de la marca">
+                </button>
+                <figcaption>
+                  <strong>Acceso con tu marca</strong>
+                  Pantalla de inicio de sesión con la imagen y los colores de tu tienda.
+                </figcaption>
+              </figure>
+            </li>
+            <li class="gallery-slide" aria-roledescription="diapositiva" aria-label="2 de 4">
+              <figure>
+                <button type="button" class="gallery-frame" aria-label="Ampliar captura: Dashboard">
+                  <img src="../assets/nianva-pos-ropa/02_dashboard.webp" width="1440" height="900" loading="lazy"
+                       alt="Dashboard de Nianva POS Ropa con ventas, tickets, gastos e ingresos del día, gráfica de ingresos y productos más vendidos">
+                </button>
+                <figcaption>
+                  <strong>Dashboard</strong>
+                  Ventas, tickets, gastos e ingresos del día, productos por reponer y los más vendidos, de un vistazo.
+                </figcaption>
+              </figure>
+            </li>
+            <li class="gallery-slide" aria-roledescription="diapositiva" aria-label="3 de 4">
+              <figure>
+                <button type="button" class="gallery-frame" aria-label="Ampliar captura: Punto de venta">
+                  <img src="../assets/nianva-pos-ropa/03_tpv.webp" width="1440" height="900" loading="lazy"
+                       alt="Pantalla de punto de venta con búsqueda por escáner o nombre, ticket del cliente, cupones, descuentos y botón Cobrar">
+                </button>
+                <figcaption>
+                  <strong>Punto de venta</strong>
+                  Cobra con lector de código de barras o buscando por nombre, con cupones y descuentos en el ticket.
+                </figcaption>
+              </figure>
+            </li>
+            <li class="gallery-slide" aria-roledescription="diapositiva" aria-label="4 de 4">
+              <figure>
+                <button type="button" class="gallery-frame" aria-label="Ampliar captura: Productos">
+                  <img src="../assets/nianva-pos-ropa/04_productos.webp" width="1440" height="900" loading="lazy"
+                       alt="Catálogo de productos con filtros por categoría, departamento y precio, stock por producto y exportación a Excel">
+                </button>
+                <figcaption>
+                  <strong>Productos</strong>
+                  Catálogo con filtros por categoría, departamento y precio, stock al día y exportación a Excel.
+                </figcaption>
+              </figure>
+            </li>
+          </ul>
+        </div>
+
+        <button type="button" class="gallery-nav gallery-prev" aria-label="Captura anterior">&#8249;</button>
+        <button type="button" class="gallery-nav gallery-next" aria-label="Captura siguiente">&#8250;</button>
+        <div class="gallery-dots"></div>
       </div>
     </div>
   </section>

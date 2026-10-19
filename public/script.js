@@ -96,7 +96,7 @@ if (contactForm && formSuccess) {
 
 // Modal de cotización: cualquier enlace con data-cotizar lo abre sin salir de la página.
 // Sin JS (o sin soporte de <dialog>) el enlace sigue llevando al formulario de contacto.
-const PRODUCTOS = ['Angara Dental', 'Nianva POS', 'Proyecto a medida'];
+const PRODUCTOS = ['Angara Dental', 'Nianva POS', 'Nianva POS Ropa', 'Proyecto a medida'];
 const disparadores = document.querySelectorAll('[data-cotizar]');
 
 if (disparadores.length && typeof HTMLDialogElement === 'function') {
@@ -467,6 +467,104 @@ function iniciarParticulas(canvas, contenedor) {
   document.addEventListener('visibilitychange', () => {
     if (document.hidden) detener(); else iniciar();
   });
+}
+
+// Galerías de capturas: carrusel con flechas, puntos y teclado + vista ampliada al hacer clic.
+// Sin JS el carrusel sigue funcionando con scroll horizontal (scroll-snap en CSS).
+document.querySelectorAll('.gallery').forEach(iniciarGaleria);
+
+function iniciarGaleria(galeria) {
+  const viewport = galeria.querySelector('.gallery-viewport');
+  const slides = [...galeria.querySelectorAll('.gallery-slide')];
+  const anterior = galeria.querySelector('.gallery-prev');
+  const siguiente = galeria.querySelector('.gallery-next');
+  const contenedorPuntos = galeria.querySelector('.gallery-dots');
+  let actual = 0;
+
+  const puntos = slides.map((_, i) => {
+    const punto = document.createElement('button');
+    punto.type = 'button';
+    punto.className = 'gallery-dot';
+    punto.setAttribute('aria-label', `Ver captura ${i + 1} de ${slides.length}`);
+    punto.addEventListener('click', () => irA(i));
+    contenedorPuntos.appendChild(punto);
+    return punto;
+  });
+
+  function irA(indice) {
+    const destino = Math.max(0, Math.min(slides.length - 1, indice));
+    viewport.scrollTo({ left: slides[destino].offsetLeft - slides[0].offsetLeft, behavior: menosMovimiento ? 'auto' : 'smooth' });
+  }
+
+  function marcarActual() {
+    actual = Math.round(viewport.scrollLeft / viewport.clientWidth);
+    puntos.forEach((punto, i) => punto.setAttribute('aria-current', i === actual ? 'true' : 'false'));
+    anterior.disabled = actual === 0;
+    siguiente.disabled = actual === slides.length - 1;
+  }
+
+  anterior.addEventListener('click', () => irA(actual - 1));
+  siguiente.addEventListener('click', () => irA(actual + 1));
+  viewport.addEventListener('scroll', debounce(marcarActual, 60));
+  viewport.addEventListener('keydown', (event) => {
+    if (event.key === 'ArrowLeft') { event.preventDefault(); irA(actual - 1); }
+    if (event.key === 'ArrowRight') { event.preventDefault(); irA(actual + 1); }
+  });
+
+  // Vista ampliada (un solo <dialog> compartido por la galería)
+  if (typeof HTMLDialogElement === 'function') {
+    const visor = crearVisor();
+    const imagenVisor = visor.querySelector('img');
+    const leyendaVisor = visor.querySelector('.lightbox-caption');
+    let enVisor = 0;
+
+    const mostrar = (indice) => {
+      enVisor = (indice + slides.length) % slides.length;
+      const img = slides[enVisor].querySelector('img');
+      imagenVisor.src = img.currentSrc || img.src;
+      imagenVisor.alt = img.alt;
+      leyendaVisor.innerHTML = slides[enVisor].querySelector('figcaption').innerHTML;
+    };
+
+    slides.forEach((slide, i) => {
+      slide.querySelector('.gallery-frame').addEventListener('click', () => {
+        mostrar(i);
+        document.documentElement.classList.add('modal-open');
+        visor.showModal();
+      });
+    });
+
+    visor.querySelector('.gallery-prev').addEventListener('click', () => mostrar(enVisor - 1));
+    visor.querySelector('.gallery-next').addEventListener('click', () => mostrar(enVisor + 1));
+    visor.querySelector('.lightbox-close').addEventListener('click', () => visor.close());
+    visor.addEventListener('click', (event) => { if (event.target === visor) visor.close(); });
+    visor.addEventListener('keydown', (event) => {
+      if (event.key === 'ArrowLeft') mostrar(enVisor - 1);
+      if (event.key === 'ArrowRight') mostrar(enVisor + 1);
+    });
+    visor.addEventListener('close', () => {
+      document.documentElement.classList.remove('modal-open');
+      irA(enVisor);   // al cerrar, el carrusel queda en la captura que se estaba viendo
+    });
+  }
+
+  galeria.classList.add('is-ready');
+  marcarActual();
+}
+
+function crearVisor() {
+  const visor = document.createElement('dialog');
+  visor.className = 'lightbox';
+  visor.setAttribute('aria-label', 'Captura ampliada');
+  visor.innerHTML = `
+    <button type="button" class="modal-close lightbox-close" aria-label="Cerrar">&times;</button>
+    <img src="" alt="">
+    <p class="lightbox-caption"></p>
+    <button type="button" class="gallery-nav gallery-prev" aria-label="Captura anterior">&#8249;</button>
+    <button type="button" class="gallery-nav gallery-next" aria-label="Captura siguiente">&#8250;</button>
+  `;
+  document.body.appendChild(visor);
+  return visor;
 }
 
 function debounce(fn, espera) {
